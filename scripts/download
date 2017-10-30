@@ -5,9 +5,9 @@ set -e
 root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/.."
 platform=`uname -a | awk '{print tolower($1)}'`
 arch=`uname -m`
-version="1.15.1"
+version="1.14.5"
 url="https://github.com/satoshilabs/bitcoin-2x/releases/download"
-tag="v1.15.1"
+tag="v1.14.5"
 
 if [ "${platform}" == "linux" ]; then
     if [ "${arch}" == "x86_64" ]; then
