@@ -5,16 +5,12 @@ set -e
 root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/.."
 platform=`uname -a | awk '{print tolower($1)}'`
 arch=`uname -m`
-version="0.16.0"
-url="https://github.com/satoshilabs/bitcoin-abc/releases/download"
-tag="v0.16.0"
+version="0.17.0"
+url="https://download.bitcoinabc.org/${version}/linux"
+tag="v0.17.0"
 
 if [ "${platform}" == "linux" ]; then
-    if [ "${arch}" == "x86_64" ]; then
-        tarball_name="bitcoin-abc-${version}-linux64.tar.gz"
-    elif [ "${arch}" == "x86_32" ]; then
-        tarball_name="bitcoin-abc-${version}-linux32.tar.gz"
-    fi
+    tarball_name="bitcoin-abc-${version}-x86_64-linux-gnu.tar.gz"
 elif [ "${platform}" == "darwin" ]; then
     tarball_name="bitcoin-abc-${version}-osx64.tar.gz"
 else
@@ -22,8 +18,8 @@ else
     exit -1
 fi
 
-binary_url="${url}/${tag}/${tarball_name}"
-shasums_url="${url}/${tag}/SHA256SUMS.asc"
+binary_url="${url}/${tarball_name}"
+shasums_url="${url}/SHA256SUMS.asc"
 
 download_bitcoind() {
 
